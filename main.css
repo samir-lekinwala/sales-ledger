@@ -1,0 +1,21 @@
+h1 {
+  font-family: 'Courier New', Courier, monospace;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+header,
+footer {
+  background-color: #cdffbc;
+}
+
+p {
+  font-size: 2em;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+input {
+  background-color: #cdffbc;
+  padding: 10px;
+  font-size: 2em;
+}
