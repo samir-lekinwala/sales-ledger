@@ -28,7 +28,7 @@ let soldPrice
 let platformUsed = ''
 const trademeFees = 0.079 //7.9%
 let costofItemWithoutFee
-let fee
+let fee = 0
 
 function getSaleData() {
   itemSold = itemSoldInput.value
@@ -68,6 +68,10 @@ function outputData() {
       platformUsed.value + ' ' + 'Fee at ' + 0.079 * 100 + '%'
     justFeesOutput.innerHTML = fee
   }
+  if (platformUsed.value == 'facebook') {
+    itemFeesOutput.innerHTML = 'No Fees'
+    justFeesOutput.innerHTML = fee
+  }
 }
 
 //fees for trademe
@@ -84,3 +88,7 @@ function priceBeforeFees(platform) {
 }
 
 // function justFeeCost() {}
+
+//on submit it should take the values from the different elements and make a table out of them. Table will come below and new item will be added everytime user hits submit.
+//table will need to be sequential in order of oldest(number 1 upwards).
+// data to be stored in array or object?
