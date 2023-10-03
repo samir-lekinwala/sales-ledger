@@ -3,41 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
     <link rel="stylesheet" href="main.css" />
     <title>Sales Ledger</title>
   </head>
   <body>
-    <header><h1>Sales ledger</h1></header>
+    <header class="container is-fluid">
+      <h1 class="title">Sales ledger</h1>
+    </header>
     <div class="salesLedger">
-      <div class="itemSold">
-        <p>Item Sold:</p>
-        <input type="text" />
+      <div class="form content">
+        <div class="itemSold column is-full">
+          <p>Item Sold:</p>
+          <input class="input" type="text" placeholder="Description of item" />
+        </div>
+        <div class="price column is-full">
+          <p>Price:</p>
+          <input class="input" type="text" placeholder="in $" />
+        </div>
+        <div class="platformSelector column is-full">
+          <p class="whatPlatformText">What Platform?</p>
+          <div class="select">
+            <select id="platform" name="platform">
+              <option value="none">Select one</option>
+              <option value="trademe">TradeMe</option>
+              <option value="facebook">Facebook Marketplace</option>
+              <option value="futureOption1">Feature coming soon</option>
+              <option value="futureOption2">Feature coming soon</option>
+              <option value="futureOption3">Feature coming soon</option>
+            </select>
+          </div>
+        </div>
       </div>
-      <div class="price">
-        <p>Price:</p>
-        <input type="number" />
-      </div>
-      <div class="platformSelector">
-        <label for="platform">What platform?</label>
-        <select id="platform" name="platform">
-          <option value="none">Select one</option>
-          <option value="trademe">TradeMe</option>
-          <option value="facebook">Facebook Marketplace</option>
-          <option value="futureOption1">Feature coming soon</option>
-          <option value="futureOption2">Feature coming soon</option>
-          <option value="futureOption3">Feature coming soon</option>
-        </select>
-      </div>
-      <div class="saleSummary">
+      <div class="saleSummary content is-medium box">
         <p id="withoutFee"></p>
         <table>
           <tr>
-            <p id="item">X</p>
+            <p id="item" class="subtitle">X</p>
           </tr>
           <tr>
-            <p>Sold for:</p>
+            <p class="subtitle">Sold for:</p>
           </tr>
-          <td id="itemSoldFor">4545</td>
+          <tr id="itemSoldFor" class="">
+            4545
+          </tr>
           <tr>
             <td>Total without fee</td>
             <td id="xFeesAtX">X Fees at X%</td>
@@ -47,17 +59,16 @@
         </table>
       </div>
     </div>
-    <footer>
-      <table class="totals">
-        <tr>
-          <td>Current totals before fees:</td>
-          <td id="currentTotalsBeforeFees">Test1</td>
-        </tr>
-        <tr>
-          <td>Current totals with fees:</td>
-          <td id="currentTotalWithFees">Test2</td>
-        </tr>
-      </table>
+    <footer class="footer">
+      <div class="container is-fluid">
+        <table>
+          <th><p>Current totals before fees:</p></th>
+            <td id="currentTotalsBeforeFees"><p>Test1</p></td>
+            <th><p>Current totals with fees:</p></th>
+            <td id="currentTotalWithFees"><p>Test2</p></td>
+          </tr>
+        </table>
+      </div>
     </footer>
   </body>
 </html>
