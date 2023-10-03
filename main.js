@@ -2,6 +2,8 @@
 let itemSoldInput = document.getElementById('itemSoldInput')
 let priceInput = document.getElementById('itemPriceInput')
 let platformInput = document.getElementById('platform')
+//Submit button
+let saveButton = document.getElementById('submitSale')
 //Outputs
 let itemSoldOutput = document.getElementById('itemSoldOutput')
 let itemSoldForOutput = document.getElementById('itemSoldForOutput')
@@ -23,20 +25,29 @@ let currentTotalWithFees = document.getElementById('currentTotalWithFees')
 //trademe fees 7.9%
 //facebook no fees
 
-let itemSold = ''
-let soldPrice
-let platformUsed = ''
+//change this all to object
+// let itemSold = ''
+// let soldPrice
+// let platformUsed = ''
 const trademeFees = 0.079 //7.9%
-let costofItemWithoutFee
-let fee = 0
+// let costofItemWithoutFee
+// let fee = 0
+let savedSaleSummary
+let saleSummary = {
+  itemSold: '',
+  soldPrice: '',
+  platformUsed: '',
+  costofItemWithoutFee: '',
+  fee: 0,
+}
 
 function getSaleData() {
-  itemSold = itemSoldInput.value
-  soldPrice = Number(checkIfNumber(priceInput.value))
-  if (isNaN(soldPrice)) {
+  saleSummary.itemSold = itemSoldInput.value
+  saleSummary.soldPrice = Number(checkIfNumber(priceInput.value))
+  if (isNaN(saleSummary.soldPrice)) {
     priceInput.value = ''
   }
-  platformUsed = platformInput
+  saleSummary.platformUsed = platformInput.value
 }
 
 //checking if input is containing integers, not letters.
@@ -53,24 +64,23 @@ function checkIfNumber(input) {
 platformInput.addEventListener('change', (event) => {
   getSaleData()
   outputData()
-  priceBeforeFees(platformUsed.value)
+  priceBeforeFees(saleSummary.platformUsed)
   //change outputs correspondingly
 
   // insert function to change the outputs
 })
 
 function outputData() {
-  itemSoldOutput.innerHTML = itemSold
-  itemSoldForOutput.innerHTML = soldPrice
-  if (platformUsed.value == 'trademe') {
-    fee = calculateTrademeFees(soldPrice)
-    itemFeesOutput.innerHTML =
-      platformUsed.value + ' ' + 'Fee at ' + 0.079 * 100 + '%'
-    justFeesOutput.innerHTML = fee
-  }
-  if (platformUsed.value == 'facebook') {
-    itemFeesOutput.innerHTML = 'No Fees'
-    justFeesOutput.innerHTML = fee
+  itemSoldOutput.innerHTML = saleSummary.itemSold
+  itemSoldForOutput.innerHTML = saleSummary.soldPrice
+  if (saleSummary.platformUsed == 'trademe') {
+    saleSummary.fee = calculateTrademeFees(saleSummary.soldPrice)
+    itemFeesOutput.innerHTML = 'TradeMe ' + 'fees at ' + 0.079 * 100 + '%'
+    justFeesOutput.innerHTML = saleSummary.fee
+  } else if (saleSummary.platformUsed == 'facebook') {
+    itemFeesOutput.innerHTML = 'Facebook: No Fees'
+    saleSummary.fee = 0
+    justFeesOutput.innerHTML = saleSummary.fee
   }
 }
 
@@ -82,8 +92,12 @@ function calculateTrademeFees(price) {
 
 function priceBeforeFees(platform) {
   if (platform == 'trademe') {
-    costofItemWithoutFee = Math.abs(soldPrice * trademeFees - soldPrice)
-    withoutFeesOutput.innerHTML = costofItemWithoutFee
+    saleSummary.costofItemWithoutFee = Math.abs(
+      saleSummary.soldPrice * trademeFees - saleSummary.soldPrice
+    )
+    withoutFeesOutput.innerHTML = saleSummary.costofItemWithoutFee
+  } else if (platform == 'facebook') {
+    withoutFeesOutput.innerHTML = saleSummary.soldPrice
   }
 }
 
@@ -92,3 +106,30 @@ function priceBeforeFees(platform) {
 //on submit it should take the values from the different elements and make a table out of them. Table will come below and new item will be added everytime user hits submit.
 //table will need to be sequential in order of oldest(number 1 upwards).
 // data to be stored in array or object?
+
+saveButton.addEventListener('click', (event) => {
+  event.preventDefault(event)
+  savedSaleSummary = saleSummary
+  saleSummary = {}
+  clearScreen()
+
+  //change outputs correspondingly
+  // insert function to change the outputs
+})
+
+//event listeners
+//function to create object out of values of the inputs and outputs
+function clearScreen() {
+  itemSoldInput.value = ''
+  priceInput.value = ''
+  platformInput.value = 'none'
+  //Outputs
+  itemSoldOutput.innerHTML = 'Item'
+  itemSoldForOutput.innerHTML = '0'
+  itemFeesOutput.innerHTML = 'Fees'
+  withoutFeesOutput.innerHTML = 0
+  justFeesOutput.innerHTML = 0
+  //outputs for total sales
+  // totalSalesBeforeFees
+  // currentTotalWithFees
+}
