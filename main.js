@@ -32,6 +32,7 @@ let currentTotalWithFees = document.getElementById('currentTotalWithFees')
 const trademeFees = 0.079 //7.9%
 // let costofItemWithoutFee
 // let fee = 0
+let arrayOfSavedSales = []
 let savedSaleSummary
 let saleSummary = {
   itemSold: '',
@@ -75,7 +76,7 @@ function outputData() {
   itemSoldForOutput.innerHTML = saleSummary.soldPrice
   if (saleSummary.platformUsed == 'trademe') {
     saleSummary.fee = calculateTrademeFees(saleSummary.soldPrice)
-    itemFeesOutput.innerHTML = 'TradeMe ' + 'fees at ' + 0.079 * 100 + '%'
+    itemFeesOutput.innerHTML = 'TradeMe fees at ' + 0.079 * 100 + '%'
     justFeesOutput.innerHTML = saleSummary.fee
   } else if (saleSummary.platformUsed == 'facebook') {
     itemFeesOutput.innerHTML = 'Facebook: No Fees'
@@ -109,7 +110,8 @@ function priceBeforeFees(platform) {
 
 saveButton.addEventListener('click', (event) => {
   event.preventDefault(event)
-  savedSaleSummary = saleSummary
+  // savedSaleSummary = saleSummary
+  arrayOfSavedSales.push(saleSummary)
   saleSummary = {}
   clearScreen()
 
@@ -132,4 +134,9 @@ function clearScreen() {
   //outputs for total sales
   // totalSalesBeforeFees
   // currentTotalWithFees
+}
+
+//function to make table and add object data to it when save is hit
+function addToTable() {
+  //if there is no table, create table
 }
