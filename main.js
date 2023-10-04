@@ -25,13 +25,7 @@ let currentTotalWithFees = document.getElementById('currentTotalWithFees')
 //trademe fees 7.9%
 //facebook no fees
 
-//change this all to object
-// let itemSold = ''
-// let soldPrice
-// let platformUsed = ''
 const trademeFees = 0.079 //7.9%
-// let costofItemWithoutFee
-// let fee = 0
 let arrayOfSavedSales = []
 let savedSaleSummary
 let saleSummary = {
@@ -59,6 +53,8 @@ function checkIfNumber(input) {
     let characters = array[i]
     if (characters.match(/[0-9/.]/)) {
       return input
+    } else {
+      // alert('Price needs to be a number!')
     }
   }
 }
@@ -100,10 +96,9 @@ function priceBeforeFees(platform) {
     withoutFeesOutput.innerHTML = saleSummary.costofItemWithoutFee
   } else if (platform == 'facebook') {
     withoutFeesOutput.innerHTML = saleSummary.soldPrice
+    saleSummary.costofItemWithoutFee = saleSummary.soldPrice
   }
 }
-
-// function justFeeCost() {}
 
 //on submit it should take the values from the different elements and make a table out of them. Table will come below and new item will be added everytime user hits submit.
 //table will need to be sequential in order of oldest(number 1 upwards).
@@ -147,9 +142,6 @@ function clearScreen() {
   itemFeesOutput.innerHTML = 'Fees'
   withoutFeesOutput.innerHTML = 0
   justFeesOutput.innerHTML = 0
-  //outputs for total sales
-  // totalSalesBeforeFees
-  // currentTotalWithFees
 }
 
 //function to make table and add object data to it when save is hit
@@ -161,24 +153,13 @@ function addToTable() {
     let newText = document.createTextNode(savedSaleSummary[key])
     newCell.appendChild(newText)
   }
-  //if there is no table, create table
-  // const tableData = document.createElement('td')
-  // const row = document.createElement('tr')
   let saleSummaryLength = Object.keys(saleSummary).length
-
-  // row.innerHTML = saleSummary.itemSold
-  // const tabledata = document.createElement('td')
 }
-
-let sumOfTotalBeforeFees
 
 function calculateTotals() {
   totalSoldWithFees += saleSummary.soldPrice
   totalSoldWithoutFees += saleSummary.costofItemWithoutFee
 }
-
-//go over the array and objects within them to pick out the sold prices without fees
-//get
 
 function updateTotals() {
   totalSalesBeforeFees.innerHTML = totalSoldWithoutFees
