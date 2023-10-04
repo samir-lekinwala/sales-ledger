@@ -109,15 +109,26 @@ function priceBeforeFees(platform) {
 //table will need to be sequential in order of oldest(number 1 upwards).
 // data to be stored in array or object?
 let orderNumber = 1
+let totalSoldWithFees = 0
+let totalSoldWithoutFees = 0
 
 saveButton.addEventListener('click', (event) => {
   event.preventDefault(event)
   orderNumber++
   savedSaleSummary = saleSummary
+  calculateTotals()
+  updateTotals()
   arrayOfSavedSales.push(saleSummary)
   addToTable()
   saleSummary = {}
-  saleSummary.number = orderNumber
+  saleSummary = {
+    number: orderNumber,
+    itemSold: '',
+    platformUsed: '',
+    soldPrice: '',
+    fee: 0,
+    costofItemWithoutFee: '',
+  }
   clearScreen()
 
   //change outputs correspondingly
@@ -157,4 +168,19 @@ function addToTable() {
 
   // row.innerHTML = saleSummary.itemSold
   // const tabledata = document.createElement('td')
+}
+
+let sumOfTotalBeforeFees
+
+function calculateTotals() {
+  totalSoldWithFees += saleSummary.soldPrice
+  totalSoldWithoutFees += saleSummary.costofItemWithoutFee
+}
+
+//go over the array and objects within them to pick out the sold prices without fees
+//get
+
+function updateTotals() {
+  totalSalesBeforeFees.innerHTML = totalSoldWithoutFees
+  currentTotalWithFees.innerHTML = totalSoldWithFees
 }
