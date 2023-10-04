@@ -32,34 +32,33 @@
                   <option value="none">Select one</option>
                   <option value="trademe">TradeMe</option>
                   <option value="facebook">Facebook Marketplace</option>
-                  <option value="futureOption1">Feature coming soon</option>
+                  <!-- <option value="futureOption1">Feature coming soon</option>
                   <option value="futureOption2">Feature coming soon</option>
-                  <option value="futureOption3">Feature coming soon</option>
+                  <option value="futureOption3">Feature coming soon</option> -->
                 </select>
-                <!-- <input type="submit" value="Submit" id="submitSale"> -->
                 <button class="button" id="submitSale">Save</button>
               </form>
           </div>
         </div>
       </div>
+    <div id="soldSummaryAndHistory">
       <div class="saleSummary content is-medium box">
         <!-- <p id="withoutFee"></p> -->
         <table>
           <tr>
-            <p id="itemSoldOutput" class="subtitle">X</p>
+            <p id="itemSoldOutput" class="subtitle"></p>
           </tr>
           <tr>
             <p class="subtitle">Sold for:</p>
           </tr>
-          <tr><p id="itemSoldForOutput">4545</p>
-            <!-- 4545 -->
+          <tr><p id="itemSoldForOutput"></p>
           </tr>
           <tr>
             <td>Total without fee</td>
-            <td id="xFeesAtX">X Fees at X%</td>
+            <td id="xFeesAtX">Fee</td>
           </tr>
-          <td id="withoutFee" class="green">454</td>
-          <td id="justFee" class="green">666</td>
+          <td id="withoutFee" class="green"></td>
+          <td id="justFee" class="green"></td>
         </table>
       </div>
     </div>
@@ -73,23 +72,16 @@
         <th>Fees</th>
         <th>Price Without Fees</th>
       </tr>
-      <tr>
-        <td>1</td>
-        <td>gtx1060</td>
-        <td>trademe</td>
-        <td>160</td>
-        <td>12</td>
-        <td>148</td>
-      </tr>
     </tbody>
     </table>
+    </div>
     <footer class="footer">
       <div class="container is-fluid">
-        <table>
+        <table id="currentTotalsSummary">
           <th><p>Current totals before fees:</p></th>
-            <td><p id="currentTotalsBeforeFees">Test1</p></td>
+            <td><p id="currentTotalsBeforeFees"></p></td>
             <th><p>Current totals with fees:</p></th>
-            <td><p id="currentTotalWithFees">Test2</p></td>
+            <td><p id="currentTotalWithFees"></p></td>
           </tr>
         </table>
       </div>

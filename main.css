@@ -82,7 +82,9 @@ footer {
 }
 
 .select {
-  /* background-color: green; */
+  /* background-color: green;
+   */
+  margin-bottom: 20px;
 }
 
 #platform {
@@ -101,9 +103,19 @@ table p {
 }
 
 footer {
-  display: sticky;
+  margin-top: 200px;
+  display: block;
 }
 
 .table {
   margin-top: 50px;
+}
+
+/* #currentTotalsSummary {
+  display: none;
+} */
+
+#soldSummaryAndHistory,
+#saleHistory {
+  display: none;
 }
