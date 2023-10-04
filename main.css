@@ -80,3 +80,12 @@ footer {
 .table {
   margin-top: 50px;
 }
+
+table tr {
+  /* border: solid black; */
+}
+
+#costSummary {
+  /* background-color: red; */
+  table-layout: fixed;
+}

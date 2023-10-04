@@ -12,6 +12,7 @@
   </head>
   <body>
     <header class="container is-fluid">
+    <!-- <header class="navbar"> -->
       <h1 class="title">Sales ledger</h1>
     </header>
     <div class="salesLedger">
@@ -44,6 +45,7 @@
     <div id="soldSummaryAndHistory">
       <div class="saleSummary content is-medium box">
         <!-- <p id="withoutFee"></p> -->
+        <!-- <table class="table is-fullwidth"> -->
         <table>
           <tr>
             <p id="itemSoldOutput" class="subtitle"></p>
@@ -53,12 +55,21 @@
           </tr>
           <tr><p id="itemSoldForOutput"></p>
           </tr>
-          <tr>
-            <td>Total without fee</td>
-            <td id="xFeesAtX">Fee</td>
+          <table class="table" id="costSummary">
+            <tr>
+            <th><div id="totalWithoutFeesOutput">Total without fee</div></th>
+            <th><div id="xFeesAtX">Fee</div></th></tr>
+            <tr>
+            <td><div id="withoutFee">545</div></td>
+            <td><div id="justFee">6</div></td>
           </tr>
-          <td id="withoutFee" class="green"></td>
-          <td id="justFee" class="green"></td>
+          </table>  
+            <!-- <tr class="coulmns">
+            <th class="column is-narrow-mobile">Total without fee</th>
+            <th class="column is-narrow-mobile" id="xFeesAtX">Fee</th>
+          </tr> -->
+          <!-- <td id="withoutFee" class="green"></td>
+          <td id="justFee" class="green"></td> -->
         </table>
       </div>
     </div>
@@ -82,6 +93,8 @@
             <td><p id="currentTotalsBeforeFees"></p></td>
             <th><p>Current totals with fees:</p></th>
             <td><p id="currentTotalWithFees"></p></td>
+            <th><p>Current total on fees:</p></th>
+            <td><p id="currentTotalOnFees"></p></td>
           </tr>
         </table>
       </div>
