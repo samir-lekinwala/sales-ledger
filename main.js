@@ -13,6 +13,7 @@ let justFeesOutput = document.getElementById('justFee')
 //outputs for total sales
 let totalSalesBeforeFees = document.getElementById('currentTotalsBeforeFees')
 let currentTotalWithFees = document.getElementById('currentTotalWithFees')
+let totalFeesOutput = document.getElementById('currentTotalOnFees')
 
 //User inputs description of what item they sold and price and platform used
 //
@@ -26,8 +27,14 @@ let currentTotalWithFees = document.getElementById('currentTotalWithFees')
 //facebook no fees
 
 const trademeFees = 0.079 //7.9%
+
+//array of all sales get pushed to this array as objects
 let arrayOfSavedSales = []
+
+//saved copy of sale summary
 let savedSaleSummary
+
+//object to house summary of all components
 let saleSummary = {
   number: 1,
   itemSold: '',
@@ -37,6 +44,7 @@ let saleSummary = {
   costofItemWithoutFee: '',
 }
 
+//function to get data from various inputs and put them into the salesSummary object
 function getSaleData() {
   saleSummary.itemSold = itemSoldInput.value
   saleSummary.soldPrice = Number(checkIfNumber(priceInput.value))
@@ -54,20 +62,25 @@ function checkIfNumber(input) {
     if (characters.match(/[0-9/.]/)) {
       return input
     } else {
-      // alert('Price needs to be a number!')
+      alert('Price needs to be a number!')
     }
   }
 }
+
+//event listeners to change outputs based on inputs
+priceInput.addEventListener('change', (event) => {
+  getSaleData()
+  outputData()
+  priceBeforeFees(saleSummary.platformUsed)
+})
 
 platformInput.addEventListener('change', (event) => {
   getSaleData()
   outputData()
   priceBeforeFees(saleSummary.platformUsed)
-  //change outputs correspondingly
-
-  // insert function to change the outputs
 })
 
+//output to user how much the price and fees is
 function outputData() {
   itemSoldOutput.innerHTML = saleSummary.itemSold
   itemSoldForOutput.innerHTML = saleSummary.soldPrice
@@ -83,11 +96,11 @@ function outputData() {
 }
 
 //fees for trademe
-
 function calculateTrademeFees(price) {
   return price * 0.079 //7.9%
 }
 
+//function to get price without fee
 function priceBeforeFees(platform) {
   if (platform == 'trademe') {
     saleSummary.costofItemWithoutFee = Math.abs(
@@ -99,14 +112,13 @@ function priceBeforeFees(platform) {
     saleSummary.costofItemWithoutFee = saleSummary.soldPrice
   }
 }
-
-//on submit it should take the values from the different elements and make a table out of them. Table will come below and new item will be added everytime user hits submit.
-//table will need to be sequential in order of oldest(number 1 upwards).
-// data to be stored in array or object?
+//defaults for the totals
 let orderNumber = 1
 let totalSoldWithFees = 0
 let totalSoldWithoutFees = 0
+let totalFees = 0
 
+//event listener for save button which runs functions to send through all data to the table
 saveButton.addEventListener('click', (event) => {
   event.preventDefault(event)
   orderNumber++
@@ -127,8 +139,7 @@ saveButton.addEventListener('click', (event) => {
   clearScreen()
 })
 
-//event listeners
-//function to create object out of values of the inputs and outputs
+//function to clear screen input areas and output areas
 function clearScreen() {
   itemSoldInput.value = ''
   priceInput.value = ''
@@ -150,15 +161,26 @@ function addToTable() {
     let newText = document.createTextNode(savedSaleSummary[key])
     newCell.appendChild(newText)
   }
-  let saleSummaryLength = Object.keys(saleSummary).length
+  // let saleSummaryLength = Object.keys(saleSummary).length
 }
 
+//function to calculate totals based on all items saved
 function calculateTotals() {
   totalSoldWithFees += saleSummary.soldPrice
   totalSoldWithoutFees += saleSummary.costofItemWithoutFee
+  totalFees += saleSummary.fee
+  tableTotalSold.innerHTML = '$' + totalSoldWithFees
+  tableTotalFee.innerHTML = '$' + totalFees
+  tableTotalWithoutFee.innerHTML = '$' + totalSoldWithoutFees
 }
 
-function updateTotals() {
-  totalSalesBeforeFees.innerHTML = totalSoldWithoutFees
-  currentTotalWithFees.innerHTML = totalSoldWithFees
-}
+//updates the totals display on the screen
+// function updateTotals() {
+//   totalSalesBeforeFees.innerHTML = totalSoldWithoutFees.toFixed(2)
+//   currentTotalWithFees.innerHTML = totalSoldWithFees.toFixed(2)
+//   totalFeesOutput.innerHTML = totalFees.toFixed(2)
+// }
+
+let tableTotalSold = document.getElementById('totalsSold')
+let tableTotalFee = document.getElementById('totalsFee')
+let tableTotalWithoutFee = document.getElementById('totalsWithoutFee')

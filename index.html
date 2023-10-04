@@ -53,15 +53,15 @@
           <tr>
             <p class="subtitle">Sold for:</p>
           </tr>
-          <tr><p id="itemSoldForOutput"></p>
+          <tr><p id="itemSoldForOutput">0</p>
           </tr>
           <table class="table" id="costSummary">
             <tr>
             <th><div id="totalWithoutFeesOutput">Total without fee</div></th>
             <th><div id="xFeesAtX">Fee</div></th></tr>
             <tr>
-            <td><div id="withoutFee">545</div></td>
-            <td><div id="justFee">6</div></td>
+            <td><div id="withoutFee">0</div></td>
+            <td><div id="justFee">0</div></td>
           </tr>
           </table>  
             <!-- <tr class="coulmns">
@@ -74,6 +74,7 @@
       </div>
     </div>
     <table class="table is-fullwidth" id="saleHistory">
+      <!-- <tbody id="historyBody"> -->
       <tbody id="historyBody">
       <tr>
         <th>#</th>
@@ -84,10 +85,16 @@
         <th>Price Without Fees</th>
       </tr>
     </tbody>
+      <tr>
+        <th colspan="3">Totals</th>
+        <th id="totalsSold"></th>
+        <th id="totalsFee"></th>
+        <th id="totalsWithoutFee"></th>
+      </tr>
     </table>
     </div>
     <footer class="footer">
-      <div class="container is-fluid">
+      <!-- <div class="container is-fluid">
         <table id="currentTotalsSummary">
           <th><p>Current totals before fees:</p></th>
             <td><p id="currentTotalsBeforeFees"></p></td>
@@ -97,7 +104,7 @@
             <td><p id="currentTotalOnFees"></p></td>
           </tr>
         </table>
-      </div>
+      </div> -->
     </footer>
     <script src="/main.js"></script>
   </body>
