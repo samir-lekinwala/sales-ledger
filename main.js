@@ -125,9 +125,6 @@ saveButton.addEventListener('click', (event) => {
     costofItemWithoutFee: '',
   }
   clearScreen()
-
-  //change outputs correspondingly
-  // insert function to change the outputs
 })
 
 //event listeners
