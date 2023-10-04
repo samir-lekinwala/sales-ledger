@@ -35,11 +35,12 @@ const trademeFees = 0.079 //7.9%
 let arrayOfSavedSales = []
 let savedSaleSummary
 let saleSummary = {
+  number: 1,
   itemSold: '',
-  soldPrice: '',
   platformUsed: '',
-  costofItemWithoutFee: '',
+  soldPrice: '',
   fee: 0,
+  costofItemWithoutFee: '',
 }
 
 function getSaleData() {
@@ -107,12 +108,16 @@ function priceBeforeFees(platform) {
 //on submit it should take the values from the different elements and make a table out of them. Table will come below and new item will be added everytime user hits submit.
 //table will need to be sequential in order of oldest(number 1 upwards).
 // data to be stored in array or object?
+let orderNumber = 1
 
 saveButton.addEventListener('click', (event) => {
   event.preventDefault(event)
-  // savedSaleSummary = saleSummary
+  orderNumber++
+  savedSaleSummary = saleSummary
   arrayOfSavedSales.push(saleSummary)
+  addToTable()
   saleSummary = {}
+  saleSummary.number = orderNumber
   clearScreen()
 
   //change outputs correspondingly
@@ -138,5 +143,18 @@ function clearScreen() {
 
 //function to make table and add object data to it when save is hit
 function addToTable() {
+  let table = document.getElementById('historyBody')
+  let newRow = table.insertRow()
+  for (let key in savedSaleSummary) {
+    let newCell = newRow.insertCell()
+    let newText = document.createTextNode(savedSaleSummary[key])
+    newCell.appendChild(newText)
+  }
   //if there is no table, create table
+  // const tableData = document.createElement('td')
+  // const row = document.createElement('tr')
+  let saleSummaryLength = Object.keys(saleSummary).length
+
+  // row.innerHTML = saleSummary.itemSold
+  // const tabledata = document.createElement('td')
 }
