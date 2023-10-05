@@ -77,6 +77,6 @@ table p {
 
 .navTitle {
   background-color: #cdffbc;
-  border-radius: 50px;
+  /* border-radius: 50px; */
   height: 5vh;
 }
