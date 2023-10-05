@@ -83,15 +83,15 @@ platformInput.addEventListener('change', (event) => {
 //output to user how much the price and fees is
 function outputData() {
   itemSoldOutput.innerHTML = saleSummary.itemSold
-  itemSoldForOutput.innerHTML = saleSummary.soldPrice
+  itemSoldForOutput.innerHTML = '$' + saleSummary.soldPrice
   if (saleSummary.platformUsed == 'trademe') {
     saleSummary.fee = calculateTrademeFees(saleSummary.soldPrice)
     itemFeesOutput.innerHTML = 'TradeMe fees at ' + 0.079 * 100 + '%'
-    justFeesOutput.innerHTML = saleSummary.fee
+    justFeesOutput.innerHTML = '$' + saleSummary.fee
   } else if (saleSummary.platformUsed == 'facebook') {
     itemFeesOutput.innerHTML = 'Facebook: No Fees'
     saleSummary.fee = 0
-    justFeesOutput.innerHTML = saleSummary.fee
+    justFeesOutput.innerHTML = '$' + saleSummary.fee
   }
 }
 
@@ -106,9 +106,9 @@ function priceBeforeFees(platform) {
     saleSummary.costofItemWithoutFee = Math.abs(
       saleSummary.soldPrice * trademeFees - saleSummary.soldPrice
     )
-    withoutFeesOutput.innerHTML = saleSummary.costofItemWithoutFee
+    withoutFeesOutput.innerHTML = '$' + saleSummary.costofItemWithoutFee
   } else if (platform == 'facebook') {
-    withoutFeesOutput.innerHTML = saleSummary.soldPrice
+    withoutFeesOutput.innerHTML = '$' + saleSummary.soldPrice
     saleSummary.costofItemWithoutFee = saleSummary.soldPrice
   }
 }
@@ -124,7 +124,7 @@ saveButton.addEventListener('click', (event) => {
   orderNumber++
   savedSaleSummary = saleSummary
   calculateTotals()
-  updateTotals()
+  // updateTotals()
   arrayOfSavedSales.push(saleSummary)
   addToTable()
   saleSummary = {}

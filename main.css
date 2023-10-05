@@ -1,5 +1,6 @@
 * {
   margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 body {
@@ -10,13 +11,6 @@ h1 {
   font-family: 'Courier New', Courier, monospace;
   text-transform: uppercase;
   text-align: center;
-}
-
-header,
-footer {
-  background-color: #cdffbc;
-
-  height: 5vh;
 }
 
 p {
@@ -43,8 +37,8 @@ p {
 
 .footer {
   background-color: #cdffbc;
-  margin-bottom: 0px;
-  margin-top: 10px;
+  margin-top: 50px;
+  height: 1vh;
 }
 
 .saleSummary {
@@ -72,20 +66,17 @@ table p {
   margin: 20px;
 }
 
-footer {
-  margin-top: 200px;
-  display: block;
-}
-
 .table {
   margin-top: 50px;
-}
-
-table tr {
-  /* border: solid black; */
 }
 
 #costSummary {
   /* background-color: red; */
   table-layout: fixed;
+}
+
+.navTitle {
+  background-color: #cdffbc;
+  border-radius: 50px;
+  height: 5vh;
 }
