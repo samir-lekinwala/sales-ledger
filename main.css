@@ -21,7 +21,6 @@ p {
 .input {
   background-color: #cdffbc;
   padding: 10px;
-
   text-align: center;
   border: none;
   font-family: 'Courier New', Courier, monospace;
@@ -79,4 +78,5 @@ table p {
   background-color: #cdffbc;
   /* border-radius: 50px; */
   height: 5vh;
+  text-align: center;
 }
