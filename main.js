@@ -124,7 +124,7 @@ saveButton.addEventListener('click', (event) => {
   orderNumber++
   savedSaleSummary = saleSummary
   calculateTotals()
-  // updateTotals()
+  updateTotals()
   arrayOfSavedSales.push(saleSummary)
   addToTable()
   saleSummary = {}
@@ -169,17 +169,15 @@ function calculateTotals() {
   totalSoldWithFees += saleSummary.soldPrice
   totalSoldWithoutFees += saleSummary.costofItemWithoutFee
   totalFees += saleSummary.fee
-  tableTotalSold.innerHTML = '$' + totalSoldWithFees
-  tableTotalFee.innerHTML = '$' + totalFees
-  tableTotalWithoutFee.innerHTML = '$' + totalSoldWithoutFees
 }
 
 //updates the totals display on the screen
-// function updateTotals() {
-//   totalSalesBeforeFees.innerHTML = totalSoldWithoutFees.toFixed(2)
-//   currentTotalWithFees.innerHTML = totalSoldWithFees.toFixed(2)
-//   totalFeesOutput.innerHTML = totalFees.toFixed(2)
-// }
+
+function updateTotals() {
+  tableTotalSold.innerHTML = '$' + totalSoldWithFees.toFixed(2)
+  tableTotalFee.innerHTML = '$' + totalFees.toFixed(2)
+  tableTotalWithoutFee.innerHTML = '$' + totalSoldWithoutFees.toFixed(2)
+}
 
 let tableTotalSold = document.getElementById('totalsSold')
 let tableTotalFee = document.getElementById('totalsFee')
