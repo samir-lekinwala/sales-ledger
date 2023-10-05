@@ -121,22 +121,24 @@ let totalFees = 0
 //event listener for save button which runs functions to send through all data to the table
 saveButton.addEventListener('click', (event) => {
   event.preventDefault(event)
-  orderNumber++
-  savedSaleSummary = saleSummary
-  calculateTotals()
-  updateTotals()
-  arrayOfSavedSales.push(saleSummary)
-  addToTable()
-  saleSummary = {}
-  saleSummary = {
-    number: orderNumber,
-    itemSold: '',
-    platformUsed: '',
-    soldPrice: '',
-    fee: 0,
-    costofItemWithoutFee: '',
+  if (saleSummary.itemSold && saleSummary.soldPrice) {
+    orderNumber++
+    savedSaleSummary = saleSummary
+    calculateTotals()
+    updateTotals()
+    arrayOfSavedSales.push(saleSummary)
+    addToTable()
+    saleSummary = {}
+    saleSummary = {
+      number: orderNumber,
+      itemSold: '',
+      platformUsed: '',
+      soldPrice: '',
+      fee: 0,
+      costofItemWithoutFee: '',
+    }
+    clearScreen()
   }
-  clearScreen()
 })
 
 //function to clear screen input areas and output areas
