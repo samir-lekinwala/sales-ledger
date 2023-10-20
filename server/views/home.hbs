@@ -1,0 +1,112 @@
+{{!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="main.css" />
+    <title>Sales Ledger</title>
+  </head>
+  <body> --}}
+    <nav>
+    <!-- <header class="navbar"> -->
+      <h1 class='container is-fluid title navTitle'>Sales ledger</h1>
+    </nav>
+    <div class="salesLedger">
+      <div class="form content">
+        <div class="itemSold column is-full">
+          <p>Item Sold:</p>
+            <form name="saleData">
+              <input class="input" id="itemSoldInput" type="text" placeholder="Description of item" />
+            </div>
+            <div class="price column is-full">
+              <p>Price:</p>
+              <input class="input" id="itemPriceInput" type="number" placeholder="in $" />
+            </div>
+            <div class="platformSelector column is-full">
+              <p class="whatPlatformText">What Platform?</p>
+              <div class="select">
+                <select id="platform" name="platform">
+                  <option value="none">Select one</option>
+                  <option value="trademe">TradeMe</option>
+                  <option value="facebook">Facebook Marketplace</option>
+                  <!-- <option value="futureOption1">Feature coming soon</option>
+                  <option value="futureOption2">Feature coming soon</option>
+                  <option value="futureOption3">Feature coming soon</option> -->
+                </select>
+                <button class="button" id="submitSale">Save</button>
+              </form>
+          </div>
+        </div>
+      </div>
+    <div id="soldSummaryAndHistory">
+      <div class="saleSummary content is-medium box">
+        <!-- <p id="withoutFee"></p> -->
+        <!-- <table class="table is-fullwidth"> -->
+        <table>
+          <tr>
+            <p id="itemSoldOutput" class="subtitle"></p>
+          </tr>
+          <tr>
+            <p class="subtitle">Sold for:</p>
+          </tr>
+          <tr><p id="itemSoldForOutput">0</p>
+          </tr>
+          <table class="table" id="costSummary">
+            <tr>
+            <th><div id="totalWithoutFeesOutput">Total without fee</div></th>
+            <th><div id="xFeesAtX">Fee</div></th></tr>
+            <tr>
+            <td><div id="withoutFee">0</div></td>
+            <td><div id="justFee">0</div></td>
+          </tr>
+          </table>  
+            <!-- <tr class="coulmns">
+            <th class="column is-narrow-mobile">Total without fee</th>
+            <th class="column is-narrow-mobile" id="xFeesAtX">Fee</th>
+          </tr> -->
+          <!-- <td id="withoutFee" class="green"></td>
+          <td id="justFee" class="green"></td> -->
+        </table>
+      </div>
+    </div>
+    <div class="table-container">
+    <table class="table is-fullwidth" id="saleHistory">
+      <!-- <tbody id="historyBody"> -->
+      <tbody id="historyBody">
+      <tr>
+        <th>#</th>
+        <th>Item</th>
+        <th>Platform</th>
+        <th>Sold Price</th>
+        <th>Fees</th>
+        <th>Price Without Fees</th>
+      </tr>
+    </tbody>
+      <tr>
+        <th colspan="3">Totals</th>
+        <th id="totalsSold"></th>
+        <th id="totalsFee"></th>
+        <th id="totalsWithoutFee"></th>
+      </tr>
+    </table>
+    </div>
+    {{!-- <footer class="footer"> --}}
+      <!-- <div class="container is-fluid">
+        <table id="currentTotalsSummary">
+          <th><p>Current totals before fees:</p></th>
+            <td><p id="currentTotalsBeforeFees"></p></td>
+            <th><p>Current totals with fees:</p></th>
+            <td><p id="currentTotalWithFees"></p></td>
+            <th><p>Current total on fees:</p></th>
+            <td><p id="currentTotalOnFees"></p></td>
+          </tr>
+        </table>
+      </div> -->
+    {{!-- </footer> --}}
+    <script src="/selling.js"></script>
+  {{!-- </body>
+</html> --}}

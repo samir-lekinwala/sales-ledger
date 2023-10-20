@@ -128,18 +128,23 @@ saveButton.addEventListener('click', (event) => {
     updateTotals()
     arrayOfSavedSales.push(saleSummary)
     addToTable()
-    saleSummary = {}
-    saleSummary = {
-      number: orderNumber,
-      itemSold: '',
-      platformUsed: '',
-      soldPrice: '',
-      fee: 0,
-      costofItemWithoutFee: '',
-    }
+    saleSummaryClear()
     clearScreen()
   }
 })
+
+//clears sale summary contents
+function saleSummaryClear() {
+  saleSummary = {}
+  saleSummary = {
+    number: orderNumber,
+    itemSold: '',
+    platformUsed: '',
+    soldPrice: '',
+    fee: 0,
+    costofItemWithoutFee: '',
+  }
+}
 
 //function to clear screen input areas and output areas
 function clearScreen() {
