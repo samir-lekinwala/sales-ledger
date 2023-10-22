@@ -15,16 +15,42 @@
     <!-- <header class="navbar"> -->
       <h1 class='container is-fluid title navTitle'>Sales ledger</h1>
     </nav>
-    <div class="salesLedger">
+<div class="salesLedger">
+  <div class="form content">
+    <form method="post" action="/salessubmit">
+      <div class="itemSold column is-full">
+        <p>Item Sold:</p>
+        <input class="input" name="itemSoldInput" id="itemSoldInput" type="text" placeholder="Description of item" />
+      </div>
+      <div class="price column is-full">
+        <p>Price:</p>
+        <input class="input" name="itemPriceInput" id="itemPriceInput" type="number" placeholder="in $" />
+      </div>
+      <div class="platformSelector column is-full">
+        <p class="whatPlatformText">What Platform?</p>
+        <div class="select">
+          <select id="platform" name="platform">
+            <option value="none">Select one</option>
+            <option value="trademe">TradeMe</option>
+            <option value="facebook">Facebook Marketplace</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="button">Save</button>
+    </form>
+  </div>
+</div>
+
+    {{!-- <div class="salesLedger">
       <div class="form content">
         <div class="itemSold column is-full">
           <p>Item Sold:</p>
-            <form name="saleData">
-              <input class="input" id="itemSoldInput" type="text" placeholder="Description of item" />
+            <form name="saleData" method="post" action="/submitSalesData">
+              <input class="input" name="itemSoldInput" id="itemSoldInput" type="text" placeholder="Description of item" />
             </div>
             <div class="price column is-full">
               <p>Price:</p>
-              <input class="input" id="itemPriceInput" type="number" placeholder="in $" />
+              <input class="input" name="itemPriceInput" id="itemPriceInput" type="number" placeholder="in $" />
             </div>
             <div class="platformSelector column is-full">
               <p class="whatPlatformText">What Platform?</p>
@@ -37,11 +63,11 @@
                   <option value="futureOption2">Feature coming soon</option>
                   <option value="futureOption3">Feature coming soon</option> -->
                 </select>
-                <button class="button" id="submitSale">Save</button>
+                <button type="submit" class="button" id="submitSale">Save</button>
               </form>
           </div>
         </div>
-      </div>
+      </div> --}}
     <div id="soldSummaryAndHistory">
       <div class="saleSummary content is-medium box">
         <!-- <p id="withoutFee"></p> -->

@@ -1,3 +1,6 @@
+// import { readFile } from 'node:fs/promises'
+// import { readFile } from 'node:fs'
+
 //Inputs
 let itemSoldInput = document.getElementById('itemSoldInput')
 let priceInput = document.getElementById('itemPriceInput')
@@ -135,7 +138,6 @@ saveButton.addEventListener('click', (event) => {
 
 //clears sale summary contents
 function saleSummaryClear() {
-  saleSummary = {}
   saleSummary = {
     number: orderNumber,
     itemSold: '',
